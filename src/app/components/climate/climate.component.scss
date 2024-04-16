@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding:0;
+}
+
+#container-climate{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.cilmateDiv{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    div{
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

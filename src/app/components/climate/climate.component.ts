@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
+
 @Component({
-  selector: 'app-temperature',
-  templateUrl: './temperature.component.html',
-  styleUrls: ['./temperature.component.scss']
+  selector: 'app-climate',
+  templateUrl: './climate.component.html',
+  styleUrls: ['./climate.component.scss']
 })
-export class TemperatureComponent {
+export class ClimateComponent {
 
   constructor(public apiService: ApiServiceService) {}
 
   ngOnInit() {
     this.apiService.fetchWeatherData();
   }
-  
+
+  // changeIcon() {
+
+  // }
 }

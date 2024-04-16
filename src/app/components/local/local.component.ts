@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-local',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LocalComponent {
   
+  constructor(public apiService: ApiServiceService) {}
+
+  ngOnInit() {
+    this.apiService.fetchWeatherData();
+  }
+
   data: Date = new Date();
   day: number = this.data.getDate();
   year: number = this.data.getFullYear();
