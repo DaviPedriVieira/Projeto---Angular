@@ -11,8 +11,10 @@ export class ApiServiceService {
   constructor(private http: HttpClient) { }
 
   fetchWeatherData() {
+    let whichCity = 'São Paulo, SP'
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=bac82211&city_name=${whichCity}`
     return this.http
-    .get<any>('https://api.hgbrasil.com/weather?format=json-cors&key=bac82211').subscribe((data) => {this.weatherData = data;});
+    .get<any>(apiLink).subscribe((data) => {this.weatherData = data;});
   }
 }
 

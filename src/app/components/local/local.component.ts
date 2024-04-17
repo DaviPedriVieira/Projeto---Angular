@@ -8,10 +8,17 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class LocalComponent {
   
+  selectedCity: string = 'São Paulo, SP';
+
   constructor(public apiService: ApiServiceService) {}
 
   ngOnInit() {
     this.apiService.fetchWeatherData();
+  }
+
+  onCityChange(event: any) {
+    this.selectedCity = event.target.value;
+    
   }
 
   data: Date = new Date();
@@ -49,5 +56,4 @@ export class LocalComponent {
     return months[data.getMonth()]
   }
 
-  
 }

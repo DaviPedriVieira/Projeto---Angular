@@ -1,36 +1,41 @@
 <table id="container-climate">
     <div class="cilmateDiv">
-        <div>hj</div>
-        <div><img [src]="'./assets/' + apiService.weatherData.results.condition_slug + '.svg'"></div>
-        <div>19°</div>
-        <div>💧 0%</div>
+        <div>{{apiService.weatherData.results.forecast[1].weekday}}</div>
+        <div><img [src]="'./assets/' + apiService.weatherData.results.forecast[1].condition + '.svg'"></div>
+        <div>{{apiService.weatherData.results.forecast[1].max}}° - {{apiService.weatherData.results.forecast[1].min}}°</div>
+        <div>💧 {{apiService.weatherData.results.forecast[1].rain_probability}}%</div>
+        <div>🍃 {{apiService.weatherData.results.forecast[1].wind_speedy}}</div>
     </div>
     <hr>
     <div class="cilmateDiv">
-        <div>amanhã</div>
-        <div><img [src]="'./assets/' + apiService.weatherData.results.condition_slug + '.svg'"></div>
-        <div>19°</div>
-        <div>💧 0%</div>
+        <div>{{apiService.weatherData.results.forecast[2].weekday}}</div>
+        <div><img [src]="'./assets/' + apiService.weatherData.results.forecast[2].condition + '.svg'"></div>
+        <div>{{apiService.weatherData.results.forecast[2].max}}° - {{apiService.weatherData.results.forecast[2].min}}°</div>
+        <div>💧 {{apiService.weatherData.results.forecast[2].rain_probability}}%</div>
+        <div>🍃 {{apiService.weatherData.results.forecast[2].wind_speedy}}</div>
     </div>
     <hr>
     <div class="cilmateDiv">
-        <div>22:00</div>
-        <div><img [src]="'./assets/' + apiService.weatherData.results.condition_slug + '.svg'"></div>
-        <div>19°</div>
-        <div>💧 0%</div>
+        <div>{{apiService.weatherData.results.forecast[3].weekday}}</div>
+        <div><img [src]="'./assets/' + apiService.weatherData.results.forecast[3].condition + '.svg'"></div>
+        <div>{{apiService.weatherData.results.forecast[3].max}}° - {{apiService.weatherData.results.forecast[3].min}}°</div>
+        <div>💧 {{apiService.weatherData.results.forecast[3].rain_probability}}%</div>
+        <div>🍃 {{apiService.weatherData.results.forecast[3].wind_speedy}}</div>
     </div>
     <hr>
     <div class="cilmateDiv">
-        <div>22:00</div>
-        <div><img [src]="'./assets/' + apiService.weatherData.results.condition_slug + '.svg'"></div>
-        <div>19°</div>
-        <div>💧 0%</div>
+        <div>{{apiService.weatherData.results.forecast[4].weekday}}</div>
+        <div><img [src]="'./assets/' + apiService.weatherData.results.forecast[4].condition + '.svg'"></div>
+        <div>{{apiService.weatherData.results.forecast[4].max}}° - {{apiService.weatherData.results.forecast[4].min}}°</div>
+        <div>💧 {{apiService.weatherData.results.forecast[4].rain_probability}}%</div>
+        <div>🍃 {{apiService.weatherData.results.forecast[4].wind_speedy}}</div>
     </div>
     <hr>
     <div class="cilmateDiv">
-        <div>22:00</div>
-        <div><img [src]="'./assets/' + apiService.weatherData.results.condition_slug + '.svg'"></div>
-        <div>19°</div>
-        <div>💧 0%</div>
+        <div>{{apiService.weatherData.results.forecast[5].weekday}}</div>
+        <div><img [src]="'./assets/' + apiService.weatherData.results.forecast[5].condition + '.svg'"></div>
+        <div>{{apiService.weatherData.results.forecast[5].max}}° - {{apiService.weatherData.results.forecast[5].min}}°</div>
+        <div>💧 {{apiService.weatherData.results.forecast[5].rain_probability}}%</div>
+        <div>🍃 {{apiService.weatherData.results.forecast[5].wind_speedy}}</div>
     </div>
 </table>
