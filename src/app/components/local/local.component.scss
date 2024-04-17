@@ -10,11 +10,20 @@
     justify-content: center;
     height: 100px;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 120px;
 
     div {
         font-size: 2rem;
         margin: 20px;
     }
+}
+
+#cities {
+    background-color: rgb(19, 68, 173);
+    color: white;
+    border-color: white;;
+    border-radius: 1rem;
+    height: 10rem;
+    font-size: 1rem;
 }
 

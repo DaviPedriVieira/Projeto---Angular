@@ -1,6 +1,6 @@
 <div class="localInformations">
     
-    <select id="cities" (change)="onCityChange($event)">
+    <select id="cities">
         <option>Jaraguá do Sul, SC</option>
         <option>São Paulo, SP</option>
         <option>Rio de Janeiro, RJ</option>
@@ -15,5 +15,5 @@
     <div id="city">{{ apiService.weatherData?.results.city_name }}</div> 
     <div>{{ getTheDayOfTheWeek(data) }}, {{day}} de {{getTheMonth(data)}} de {{year}}</div>
 </div>
-  
-<!--  -->
+
+<!-- (change)="onCityChange($event)" -->
