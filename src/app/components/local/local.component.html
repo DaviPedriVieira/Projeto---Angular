@@ -1,19 +1,10 @@
 <div class="localInformations">
     
-    <select id="cities">
-        <option>Jaraguá do Sul, SC</option>
-        <option>São Paulo, SP</option>
-        <option>Rio de Janeiro, RJ</option>
-        <option>Belo Horizonte, MG</option>
-        <option>Florianópolis, SC</option>
-        <option>Gramado, RS</option>
-        <option>Campinas, SP</option>
-        <option>Recife, PE</option>
-        <option>Natal, RN</option>
-        <option>Curitiba, PR</option>
+    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()">
+        <option *ngFor="let city of cities" [value]="city.name">
+            {{ city.name }}
+          </option>
     </select>
     <div id="city">{{ apiService.weatherData?.results.city_name }}</div> 
     <div>{{ getTheDayOfTheWeek(data) }}, {{day}} de {{getTheMonth(data)}} de {{year}}</div>
 </div>
-
-<!-- (change)="onCityChange($event)" -->

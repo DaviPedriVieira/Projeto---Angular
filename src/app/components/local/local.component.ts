@@ -8,10 +8,31 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class LocalComponent {
   
+  selectedCity = "Jaraguá do Sul, SC"
+  
+  cities = [
+    { name: 'Jaraguá do Sul, SC' },
+    { name: 'São Paulo, SP' },
+    { name: 'Rio de Janeiro, RJ' },
+    { name: 'Florianópolis, SC' },
+    { name: 'Natal, RN' },
+    { name: 'Porto Alegre, RS' },
+    { name: 'Belo Horizonte, MG' },
+    { name: 'Curitiba, PR' },
+    { name: 'Recife, PE' },
+    { name: 'Vitória, ES' },
+    { name: 'Manaus, AM' },
+    { name: 'Belém, PA' },
+  ];
+
   constructor(public apiService: ApiServiceService) {}
 
   ngOnInit() {
     this.apiService.fetchWeatherData();
+  }
+
+  changeCity() {
+    this.apiService.fetchWeatherData(this.selectedCity)
   }
 
   data: Date = new Date();
@@ -48,46 +69,8 @@ export class LocalComponent {
     ]
     return months[data.getMonth()]
   }
-
-  selectedCity: string = '';
-
-
-  
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ngOnInit(): void {
-  //   this.selectedCity = localStorage.getItem('selectedCity') || 'Jaraguá do Sul, SC';
-  //   this.fetchWeatherData();
-  // }
-
-  // fetchWeatherData() {
-  //   this.weatherService.fetchData(this.selectedCity).subscribe((data) => {
-  //     this.weatherService.weatherData = data;
-  //   });
-
-  // }
-
-  // onCityChange(event: any) {
-  //   this.selectedCity = event.target.value;
-  //   this.fetchWeatherData();
-  //   localStorage.setItem('selectedCity',this.selectedCity);
-  // }
-
-  // passar parâmetros para os outros componentes

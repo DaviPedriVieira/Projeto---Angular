@@ -7,6 +7,7 @@ import { LocalComponent } from './components/local/local.component';
 import { TemperatureComponent } from './components/temperature/temperature.component';
 import { ClimateComponent } from './components/climate/climate.component';
 import { ApiServiceService } from './services/api-service.service';
+import { FormsModule } from '@angular/forms';
 
 // Chave da API: bac82211
 
@@ -23,6 +24,7 @@ import { ApiServiceService } from './services/api-service.service';
     AppRoutingModule,
     HttpClientJsonpModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [ApiServiceService],
   bootstrap: [AppComponent]

@@ -14,8 +14,4 @@ export class ClimateComponent {
   ngOnInit() {
     this.apiService.fetchWeatherData();
   }
-
-  // changeIcon() {
-
-  // }
 }
