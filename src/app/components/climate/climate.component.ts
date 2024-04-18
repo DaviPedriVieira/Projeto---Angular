@@ -12,6 +12,6 @@ export class ClimateComponent {
   constructor(public apiService: ApiServiceService) {}
 
   ngOnInit() {
-    this.apiService.fetchWeatherData();
+    // this.apiService.fetchWeatherData();
   }
 }

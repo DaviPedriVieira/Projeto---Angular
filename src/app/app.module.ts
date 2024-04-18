@@ -9,15 +9,12 @@ import { ClimateComponent } from './components/climate/climate.component';
 import { ApiServiceService } from './services/api-service.service';
 import { FormsModule } from '@angular/forms';
 
-// Chave da API: bac82211
-
 @NgModule({
   declarations: [
     AppComponent,
     LocalComponent,
     TemperatureComponent,
     ClimateComponent,
-
   ],
   imports: [
     BrowserModule,

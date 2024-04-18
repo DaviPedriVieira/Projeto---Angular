@@ -11,7 +11,9 @@ export class TemperatureComponent {
   constructor(public apiService: ApiServiceService) {}
 
   ngOnInit() {
-    this.apiService.fetchWeatherData();
+    // this.apiService.fetchWeatherData();
   }
-  
 }
+
+
+
