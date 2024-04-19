@@ -1,5 +1,4 @@
 <div class="localInformations">
-    
     <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()">
         <option *ngFor="let city of cities" [value]="city.name">
             {{ city.name }}

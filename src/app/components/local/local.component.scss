@@ -10,7 +10,7 @@
     justify-content: center;
     height: 100px;
     width: 100%;
-    margin-top: 120px;
+    margin-top: 40px;
 
     div {
         font-size: 2rem;
@@ -18,9 +18,9 @@
     }
 }
 
-.cities {
-    background-color: rgb(19, 68, 173);
-    color: white;
+#cities {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     border-color: white;;
     border-radius: 1rem;
     height: 10rem;

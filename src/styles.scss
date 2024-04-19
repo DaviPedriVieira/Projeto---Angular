@@ -4,7 +4,44 @@
 }
 
 body {
-    background:linear-gradient(rgb(19, 68, 173), rgb(17, 76, 165));
+    background-color: rgb(17, 76, 165);
     height: 100%;
     color: white;
+
+    &.dark-mode{
+        background-color: black;
+    }
+}
+
+#toggle{
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10rem;
+    background-color: rgb(255, 255, 255);
+    transition: 0.5s;
+    cursor: pointer;
+
+    .indicator{
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 30px;
+        top:0;
+        left:0;
+        width: 50px;
+        height: 50px;
+        background: #0c6199;
+        border-radius: 50%;
+        transform: escale(0.9);
+        box-shadow: 0 8px 40px rgba(0,0,0,0.5),
+                    inset 0 4px 4px rgba(255, 255, 255, 0.2),
+                    inset 0 -4px 8px rgba(255, 255, 255, 0.2);
+        transition: 0.5s;
+    }
+}
+
+#toggle.active .indicator{
+    left: 50px;
+    background-color: #222;
 }
