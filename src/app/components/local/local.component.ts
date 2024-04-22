@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service.service';
+import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
+import { ThemeService } from 'src/app/services/themeServices/theme.service';
 
 @Component({
   selector: 'app-local',
@@ -23,13 +24,20 @@ export class LocalComponent implements OnInit {
     { name: 'Vitória, ES' },
     { name: 'Manaus, AM' },
     { name: 'Belém, PA' },
+    { name: 'Grajaú, MA' },
   ];
 
-  constructor(public apiService: ApiServiceService) {}
+  darkMode: boolean = false;
+
+  constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
+
+  toggleTheme() {
+    this.themeService.toggleTheme()
+    this.darkMode = this.themeService.getCurrentTheme() === 'dark'
+  }
 
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    console.log(this.selectedCity);
     this.apiService.fetchWeatherData(this.selectedCity);
   }
 

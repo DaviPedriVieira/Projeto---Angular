@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { LocalComponent } from './components/local/local.component';
 import { TemperatureComponent } from './components/temperature/temperature.component';
 import { ClimateComponent } from './components/climate/climate.component';
-import { ApiServiceService } from './services/api-service.service';
+import { ApiServiceService } from './services/apiSevice/api-service.service';
 import { FormsModule } from '@angular/forms';
+import { ThemeService} from './services/themeServices/theme.service'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ApiServiceService],
+  providers: [ApiServiceService, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

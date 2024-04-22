@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service.service';
+import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
+import { ThemeService } from 'src/app/services/themeServices/theme.service';
 
 @Component({
   selector: 'app-temperature',
@@ -8,10 +9,10 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class TemperatureComponent {
 
-  constructor(public apiService: ApiServiceService) {}
-
-  ngOnInit() {
-    // this.apiService.fetchWeatherData();
+  constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
+  
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
 

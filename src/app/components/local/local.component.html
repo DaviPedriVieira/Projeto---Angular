@@ -1,5 +1,8 @@
+<div id="btn">
+    <div id="toggle" (click)="toggleTheme()" [class.dark-mode]="darkMode"></div>
+</div>
 <div class="localInformations">
-    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()">
+    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [class.dark-mode]="darkMode">
         <option *ngFor="let city of cities" [value]="city.name">
             {{ city.name }}
           </option>
