@@ -1,34 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeService {
+export class ThemeService{
 
-  currentTheme: string;
+  currentTheme: string = '';
   themeChangeObservable: Observable<string>
 
   constructor() {
     this.currentTheme = localStorage.getItem('Theme') || 'light';
-    this.applyTheme(this.currentTheme)
+    this.applyTheme()
     this.themeChangeObservable = new Observable<string>((observer) => {
       observer.next(this.currentTheme);
     });
   }
 
   toggleTheme() {
-    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('Theme', this.currentTheme);
-    this.applyTheme(this.currentTheme);
-
+    this.applyTheme();
+    
+    
     this.themeChangeObservable = new Observable<string>((observer) => {
       observer.next(this.currentTheme);
     });
-  }
 
-  applyTheme(theme: string) {
-    document.body.classList.toggle('dark-theme', theme === 'dark');
+    this.changeIcon(this.currentTheme);
+  }
+  
+  applyTheme() {
+    document.body.classList.toggle('dark-mode');
   }
 
   getCurrentTheme() {
@@ -39,4 +44,12 @@ export class ThemeService {
     return this.themeChangeObservable;
   }
 
+  changeIcon(currentTheme: string) {
+    const toggle: any = document.getElementById('toggle');
+    if (currentTheme === 'dark') {
+      toggle.textContent = '🌥️';
+    } else {
+      toggle.textContent = '🌙';
+    } 
+  }
 }

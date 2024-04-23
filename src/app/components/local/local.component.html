@@ -1,5 +1,5 @@
 <div id="btn">
-    <div id="toggle" (click)="toggleTheme()" [class.dark-mode]="darkMode"></div>
+    <div id="toggle" #toggleButton (click)="toggleTheme()" [ngClass]="{ 'dark-mode': darkMode }"></div>
 </div>
 <div class="localInformations">
     <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [class.dark-mode]="darkMode">
@@ -7,7 +7,7 @@
             {{ city.name }}
           </option>
     </select>
-    <div id="city">{{ (apiService.weatherData && apiService.weatherData.results) ? apiService.weatherData.results.city_name : '' }}</div> 
-    <div>{{ getTheDayOfTheWeek(data) }}, {{day}} de {{getTheMonth(data)}} de {{year}}</div>
+    <div id="city">{{ apiService.weatherData.results.city_name }}</div> 
+    <div>{{ getTheDayOfTheWeek() }}, {{day}} de {{getTheMonth()}} de {{year}}</div>
 </div>
 
