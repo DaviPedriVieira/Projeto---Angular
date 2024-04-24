@@ -28,7 +28,6 @@ export class LocalComponent implements OnInit {
     { name: 'Grajaú, MA' },
   ];
 
-  darkMode: boolean = false;
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
