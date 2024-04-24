@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -10,46 +9,57 @@ export class ThemeService{
   currentTheme: string = '';
   themeChangeObservable: Observable<string>
 
+
   constructor() {
     this.currentTheme = localStorage.getItem('Theme') || 'light';
     this.applyTheme()
+    this.changeSelect(this.currentTheme)
     this.themeChangeObservable = new Observable<string>((observer) => {
       observer.next(this.currentTheme);
     });
-  }
+
+    }
+
 
   toggleTheme() {
-    
-    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
     localStorage.setItem('Theme', this.currentTheme);
-    this.applyTheme();
-    
-    
-    this.themeChangeObservable = new Observable<string>((observer) => {
-      observer.next(this.currentTheme);
-    });
-
+    this.applyTheme()
     this.changeIcon(this.currentTheme);
+    this.changeSelect(this.currentTheme);
   }
   
   applyTheme() {
-    document.body.classList.toggle('dark-mode');
-  }
-
-  getCurrentTheme() {
-    return this.currentTheme;
-  }
-
-  getThemeChangeObservable(): Observable<string> {
-    return this.themeChangeObservable;
+    if(this.currentTheme == 'dark') {
+      document.body.classList.toggle('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }
 
   changeIcon(currentTheme: string) {
-    const toggle: any = document.getElementById('toggle');
-    if (currentTheme === 'dark') {
-      toggle.textContent = '🌥️';
+    const changeThemeBtn: HTMLElement | null = document.getElementById('btnChangeTheme');
+    if(changeThemeBtn!) {
+      if (currentTheme === 'dark') {
+        changeThemeBtn.textContent = '🌥️';
+      } else {
+        changeThemeBtn.textContent = '🌙';
+      } 
     } else {
-      toggle.textContent = '🌙';
-    } 
+      console.log("Button não foi encontrado")
+    }
+  }
+
+  changeSelect(currentTheme: string){
+    const select: HTMLElement | null = document.getElementById('cities');
+    if(select!) {
+      if (currentTheme === 'dark') {
+        select.classList.toggle('dark-mode')
+      } else {
+        select.classList.remove('dark-mode')
+      }       
+    } else {
+      console.log("Select não foi encontrado")
+    }
   }
 }

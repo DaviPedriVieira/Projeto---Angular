@@ -8,8 +8,10 @@ body {
     height: 100%;
     color: white;
     transition: 0.5;
+    width: 97%;
 
     &.dark-mode{
         background-color: black;
+        color: rgb(19, 191, 235);
     }
 }

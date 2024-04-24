@@ -1,5 +1,5 @@
-<div id="btn">
-    <div id="toggle" #toggleButton (click)="toggleTheme()" [ngClass]="{ 'dark-mode': darkMode }"></div>
+<div id="btnDiv">
+    <div id="btnChangeTheme" #toggleButton (click)="toggleTheme()" [ngClass]="{ 'dark-mode': darkMode }"></div>
 </div>
 <div class="localInformations">
     <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [class.dark-mode]="darkMode">

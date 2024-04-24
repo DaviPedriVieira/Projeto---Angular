@@ -67,4 +67,3 @@ export class LocalComponent implements OnInit {
 
 
 }
-
