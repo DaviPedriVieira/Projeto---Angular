@@ -4,11 +4,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeService{
+export class ThemeService {
 
   currentTheme: string = '';
   themeChangeObservable: Observable<string>
-
 
   constructor() {
     this.currentTheme = localStorage.getItem('Theme') || 'light';
@@ -18,8 +17,7 @@ export class ThemeService{
       observer.next(this.currentTheme);
     });
 
-    }
-
+  }
 
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
@@ -28,9 +26,9 @@ export class ThemeService{
     this.changeIcon(this.currentTheme);
     this.changeSelect(this.currentTheme);
   }
-  
+
   applyTheme() {
-    if(this.currentTheme == 'dark') {
+    if (this.currentTheme == 'dark') {
       document.body.classList.toggle('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
@@ -39,27 +37,29 @@ export class ThemeService{
 
   changeIcon(currentTheme: string) {
     const changeThemeBtn: HTMLElement | null = document.getElementById('btnChangeTheme');
-    if(changeThemeBtn!) {
+    if (changeThemeBtn!) {
       if (currentTheme === 'dark') {
         changeThemeBtn.textContent = '🌥️';
       } else {
         changeThemeBtn.textContent = '🌙';
-      } 
+      }
     } else {
       console.log("Button não foi encontrado")
     }
   }
 
-  changeSelect(currentTheme: string){
+  changeSelect(currentTheme: string) {
     const select: HTMLElement | null = document.getElementById('cities');
-    if(select!) {
+    if (select!) {
       if (currentTheme === 'dark') {
         select.classList.toggle('dark-mode')
+        localStorage.setItem('Theme', 'dark');
       } else {
         select.classList.remove('dark-mode')
-      }       
+      }
     } else {
       console.log("Select não foi encontrado")
     }
   }
 }
+
