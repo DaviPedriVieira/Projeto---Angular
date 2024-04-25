@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IWeatherData } from 'src/app/interfaces/iweather-data';
 import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
 
@@ -35,15 +37,17 @@ export class LocalComponent implements OnInit {
     this.themeService.toggleTheme()
   }
 
-  // test() {
-  //   this.apiService.fetchWeatherData().subscribe((data) => {
-  //     this.apiService.weatherData = data;
-  //   });
-  // }
+  teste(){
+    return this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
+      this.apiService.weatherData = data;
+    });
+    // o valor não deverá ir pro weatherData e sim para uma propriedade deste componente
+  }
 
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    this.apiService.fetchWeatherData()
+    // this.apiService.fetchWeatherData()
+    this.teste()
     this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
 
@@ -54,7 +58,6 @@ export class LocalComponent implements OnInit {
 
   saveCityOnLocalStorage() {
     localStorage.setItem('Cidade', this.selectedCity);
-
   }
 
   date: Date = new Date();

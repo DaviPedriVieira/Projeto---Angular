@@ -9,18 +9,16 @@ import { Observable } from 'rxjs';
 export class ApiServiceService {
 
   weatherData!: IWeatherData;
-  selectedCity = localStorage.getItem('Cidade');
 
   constructor(private http: HttpClient) { }
 
   fetchWeatherData() {
     let selectedCity = localStorage.getItem('Cidade');
     let city = selectedCity || 'Jaraguá do Sul, SC'
-    const apiKey = '265e696e'
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=${apiKey}&city_name=${city}`
-    return this.http.get<IWeatherData>(apiLink).subscribe((data) => {
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=265e696e&city_name=${city}`
+    return this.http.get<IWeatherData>(apiLink)/*.subscribe((data) => {
       this.weatherData = data;
-    });
+    });*/
 
   }
 }
