@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,16 +15,14 @@ export class ThemeService {
     this.themeChangeObservable = new Observable<string>((observer) => {
       observer.next(this.currentTheme);
     });
-
   }
 
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
     localStorage.setItem('Theme', this.currentTheme);
     this.applyTheme()
-    this.changeIcon(this.currentTheme);
+    this.changeElementsTheme(this.currentTheme);
   }
-
 
   applyTheme() {
     if (this.currentTheme == 'dark') {
@@ -34,7 +32,7 @@ export class ThemeService {
     }
   }
 
-  changeIcon(currentTheme: string) {
+  changeElementsTheme(currentTheme: string) {
     const select: HTMLElement | null = document.getElementById('cities');
     const changeThemeBtn: HTMLElement | null = document.getElementById('btnChangeTheme');
     if (changeThemeBtn!) {

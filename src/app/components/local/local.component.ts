@@ -10,7 +10,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 })
 export class LocalComponent implements OnInit {
 
-  selectedCity: string = 'Jaraguá do Sul'
+  selectedCity!: string
 
   cities = [
     { name: 'Jaraguá do Sul, SC' },
@@ -35,19 +35,26 @@ export class LocalComponent implements OnInit {
     this.themeService.toggleTheme()
   }
 
+  // test() {
+  //   this.apiService.fetchWeatherData().subscribe((data) => {
+  //     this.apiService.weatherData = data;
+  //   });
+  // }
+
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    this.apiService.fetchWeatherData(this.selectedCity);
-    this.themeService.changeIcon(this.themeService.currentTheme);
+    this.apiService.fetchWeatherData()
+    this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
 
   changeCity() {
-    this.apiService.fetchWeatherData(this.selectedCity)
     this.saveCityOnLocalStorage()
+    this.apiService.fetchWeatherData()
   }
 
   saveCityOnLocalStorage() {
     localStorage.setItem('Cidade', this.selectedCity);
+
   }
 
   date: Date = new Date();
