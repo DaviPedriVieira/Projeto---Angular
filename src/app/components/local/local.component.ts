@@ -13,6 +13,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 export class LocalComponent implements OnInit {
 
   selectedCity!: string
+  localWeatherData!: IWeatherData;
 
   cities = [
     { name: 'Jaraguá do Sul, SC' },
@@ -30,30 +31,30 @@ export class LocalComponent implements OnInit {
     { name: 'Grajaú, MA' },
   ];
 
-
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
   toggleTheme() {
     this.themeService.toggleTheme()
   }
 
-  teste(){
-    return this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
-      this.apiService.weatherData = data;
+  localApiUse() {
+    this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
+      this.localWeatherData = data;
     });
-    // o valor não deverá ir pro weatherData e sim para uma propriedade deste componente
+    return this.localWeatherData
   }
 
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
     // this.apiService.fetchWeatherData()
-    this.teste()
+    this.localApiUse()
     this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
 
   changeCity() {
     this.saveCityOnLocalStorage()
-    this.apiService.fetchWeatherData()
+    this.localApiUse()
+    //this.apiService.fetchWeatherData()
   }
 
   saveCityOnLocalStorage() {
@@ -72,6 +73,11 @@ export class LocalComponent implements OnInit {
   getTheMonth() {
     const month = this.date.toLocaleString("default", { month: 'long' });
     return month.charAt(0).toUpperCase() + month.slice(1);
+  }
+
+  // Mostrar no HTML
+  showCity() {
+    return this.localWeatherData.results.city
   }
 
 

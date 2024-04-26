@@ -1,5 +1,5 @@
 <table id="container-climate">
-    <ng-container *ngFor="let forecast of apiService.weatherData.results.forecast.slice(1, 6); let isLast = last">
+    <ng-container *ngFor="let forecast of climateWeatherData.results.forecast.slice(1, 6); let isLast = last">
       <div class="cilmateDiv">
         <div>{{forecast.weekday}}</div>
         <div><img [src]="'./assets/' + forecast.condition + '.svg'"></div>

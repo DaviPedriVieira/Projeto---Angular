@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IWeatherData } from 'src/app/interfaces/iweather-data';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  weatherData!: IWeatherData;
+  private weatherDataCache: { [city: string]: IWeatherData } = {};
+  weatherData!: IWeatherData
 
   constructor(private http: HttpClient) { }
 
   fetchWeatherData() {
     let selectedCity = localStorage.getItem('Cidade');
-    let city = selectedCity || 'Jaraguá do Sul, SC'
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=265e696e&city_name=${city}`
-    return this.http.get<IWeatherData>(apiLink)/*.subscribe((data) => {
-      this.weatherData = data;
-    });*/
+    let city = selectedCity || 'Jaraguá do Sul, SC';
 
+    if (this.weatherDataCache[city]) {
+      return of(this.weatherDataCache[city]);
+    } else {
+      let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=bac82211&city_name=${city}`;
+      return this.http.get<IWeatherData>(apiLink)/*pipe e tap*/ 
+
+    }
   }
 }
 
@@ -27,7 +31,20 @@ export class ApiServiceService {
 
 
 
-// subscribe nos componentes
+
+
+
+
+
+
+
+// baheviorSubject<IWeaher | undefined> -- get(asObservable()) e set(next())
+// fetch no constructor
+// local é o único que chama o fetch
+
+// o resto pega com base no cache/bahevior
+
+// subscribe nos componentes --> FEITO
 
 // weather data = observable
 
