@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IWeatherData } from 'src/app/interfaces/iweather-data';
 import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
 
@@ -11,6 +12,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 export class LocalComponent implements OnInit {
 
   selectedCity!: string
+  localWeatherData!: IWeatherData;
 
   cities = [
     { name: 'Jaraguá do Sul, SC' },
@@ -28,33 +30,32 @@ export class LocalComponent implements OnInit {
     { name: 'Grajaú, MA' },
   ];
 
-
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
   toggleTheme() {
     this.themeService.toggleTheme()
   }
 
-  // test() {
-  //   this.apiService.fetchWeatherData().subscribe((data) => {
-  //     this.apiService.weatherData = data;
-  //   });
-  // }
+  localApiUse() {
+    this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
+      this.localWeatherData = data;
+    });
+    return this.localWeatherData
+  }
 
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    this.apiService.fetchWeatherData()
+    this.localApiUse()
     this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
 
   changeCity() {
     this.saveCityOnLocalStorage()
-    this.apiService.fetchWeatherData()
+    this.localApiUse()
   }
 
   saveCityOnLocalStorage() {
     localStorage.setItem('Cidade', this.selectedCity);
-
   }
 
   date: Date = new Date();
@@ -69,6 +70,11 @@ export class LocalComponent implements OnInit {
   getTheMonth() {
     const month = this.date.toLocaleString("default", { month: 'long' });
     return month.charAt(0).toUpperCase() + month.slice(1);
+  }
+
+  // Mostrar no HTML
+  showCity() {
+    return this.localWeatherData.results.city
   }
 
 

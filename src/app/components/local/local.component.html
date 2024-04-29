@@ -2,12 +2,12 @@
     <div id="btnChangeTheme" #toggleButton (click)="toggleTheme()"></div>
 </div>
 <div class="localInformations">
-    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" >
+    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()">
         <option *ngFor="let city of cities" [value]="city.name">
             {{ city.name }}
           </option>
     </select>
-    <div id="city">{{ apiService.weatherData.results.city }}</div> 
+    <div id="city">{{ showCity() }}</div> 
     <div>{{ getTheDayOfTheWeek() }}, {{day}} de {{getTheMonth()}} de {{year}}</div>
 </div>
 
