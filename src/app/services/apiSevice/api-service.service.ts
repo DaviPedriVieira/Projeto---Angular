@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IWeatherData } from 'src/app/interfaces/iweather-data';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  weatherData!: IWeatherData;
-  selectedCity = localStorage.getItem('Cidade');
+  weatherData!: IWeatherData
+  private weatherDataSubject= new BehaviorSubject<IWeatherData | undefined>(undefined);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.fetchWeatherData()
+  }
+
+  getWeatherDataObservable(): Observable<IWeatherData | undefined> {
+    return this.weatherDataSubject.asObservable();
+  }
+
+  setWeatherData(weatherData: IWeatherData | undefined): void {
+    this.weatherDataSubject.next(weatherData);
+  }
 
   fetchWeatherData() {
     let selectedCity = localStorage.getItem('Cidade');
-    let city = selectedCity || 'Jaraguá do Sul, SC'
-    const apiKey = '265e696e'
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=${apiKey}&city_name=${city}`
-    return this.http.get<IWeatherData>(apiLink).subscribe((data) => {
-      this.weatherData = data;
-    });
-
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=bac82211&city_name=${selectedCity}`;
+    return this.http.get<IWeatherData>(apiLink).pipe(
+      tap((weatherData) => {
+        this.weatherDataSubject.next(weatherData)
+      })
+    );
+    
   }
 }
-
-
-
-
-
-// subscribe nos componentes
-
-// weather data = observable
-
-// cache: comparar valor do selected city com outra váriavel com o mesmo valor para quando ele mudar seja reconsultado, senão não
-
-// fazer o selected city no service, não vindo do local/header --> FEITO
