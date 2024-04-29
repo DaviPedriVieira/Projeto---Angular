@@ -36,7 +36,7 @@ export class ClimateComponent {
   
   // Mostrar no HTML
   howMuchClimate(): IForecast[] {
-    return this.climateWeatherData.results.forecast.slice(1, 6);
+    return this.climateWeatherData?.results.forecast.slice(1, 6);
   }
 
   getWeekday(forecast: IForecast): string {

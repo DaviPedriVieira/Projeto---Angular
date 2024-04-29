@@ -43,11 +43,7 @@ export class ThemeService {
         changeThemeBtn.textContent = '🌙';
         select!.classList.remove('dark-mode')
       }
-    } else {
-      console.log("Button não foi encontrado")
     }
   }
-
-  
 }
 
