@@ -16,12 +16,10 @@ export class TemperatureComponent implements OnInit{
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 
-  
-
   ngOnInit(){
     this.temperatureApiUse()
   }
-  // falta perceber quando a cidade é mudada para a temperatura mudar junto
+
   toggleTheme() {
     this.themeService.toggleTheme();
   }
@@ -34,13 +32,9 @@ export class TemperatureComponent implements OnInit{
     });
   }
 
-  teste() {
-    this.temperatureApiUse()
-  }
-
   // Mostrar no HTML
   showTemperature() {
-    return this.temperatureWeatherData.results.temp
+    return this.temperatureWeatherData?.results.temp
   }
 
   
