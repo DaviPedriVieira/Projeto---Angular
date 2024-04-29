@@ -25,7 +25,7 @@ export class ApiServiceService {
 
   fetchWeatherData() {
     let selectedCity = localStorage.getItem('Cidade');
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=bac82211&city_name=${selectedCity}`;
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=437ede73&city_name=${selectedCity}`;
     return this.http.get<IWeatherData>(apiLink).pipe(
       tap((weatherData) => {
         this.weatherDataSubject.next(weatherData)

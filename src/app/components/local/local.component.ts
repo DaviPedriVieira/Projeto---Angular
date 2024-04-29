@@ -27,7 +27,6 @@ export class LocalComponent implements OnInit {
     { name: 'Vitória, ES' },
     { name: 'Manaus, AM' },
     { name: 'Belém, PA' },
-    { name: 'Grajaú, MA' },
   ];
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
