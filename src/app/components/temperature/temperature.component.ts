@@ -27,11 +27,11 @@ export class TemperatureComponent implements OnInit{
   }
 
   temperatureApiUse(){
-    this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
-      this.temperatureWeatherData = data;
+    this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
+      if (data !== undefined) {
+        this.temperatureWeatherData = data;
+      }
     });
-    return this.temperatureWeatherData;
-
   }
 
   teste() {

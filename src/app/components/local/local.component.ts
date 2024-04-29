@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IWeatherData } from 'src/app/interfaces/iweather-data';
 import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
@@ -46,7 +45,6 @@ export class LocalComponent implements OnInit {
 
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    // this.apiService.fetchWeatherData()
     this.localApiUse()
     this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
@@ -54,7 +52,6 @@ export class LocalComponent implements OnInit {
   changeCity() {
     this.saveCityOnLocalStorage()
     this.localApiUse()
-    //this.apiService.fetchWeatherData()
   }
 
   saveCityOnLocalStorage() {

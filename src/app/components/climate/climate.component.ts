@@ -17,22 +17,17 @@ export class ClimateComponent {
   ngOnInit(){
     this.climateApiUse()
   }
-  // falta perceber quando a cidade é mudada para as previsões mudarem junto
+
   toggleTheme() {
     this.themeService.toggleTheme()
   }
 
   climateApiUse(){
-    this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
-      this.climateWeatherData = data;
+    this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
+      if (data !== undefined) {
+        this.climateWeatherData = data;
+      }
     });
     return this.climateWeatherData
   }
-
-  // Mostrar no HTML
-
-
-  
-  
-  
 }
