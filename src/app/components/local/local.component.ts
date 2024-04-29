@@ -74,7 +74,7 @@ export class LocalComponent implements OnInit {
 
   // Mostrar no HTML
   showCity() {
-    return this.localWeatherData.results.city
+    return this.localWeatherData?.results.city
   }
 
 

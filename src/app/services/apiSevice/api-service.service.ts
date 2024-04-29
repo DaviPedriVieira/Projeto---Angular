@@ -9,7 +9,6 @@ import { tap } from 'rxjs';
 })
 export class ApiServiceService {
 
-  weatherData!: IWeatherData
   private weatherDataSubject= new BehaviorSubject<IWeatherData | undefined>(undefined);
 
   constructor(private http: HttpClient) { 
@@ -32,6 +31,5 @@ export class ApiServiceService {
         this.weatherDataSubject.next(weatherData)
       })
     );
-    
   }
 }
