@@ -45,7 +45,6 @@ export class LocalComponent implements OnInit {
   ngOnInit() {
     this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
     this.localApiUse()
-    this.themeService.changeElementsTheme(this.themeService.currentTheme);
   }
 
   changeCity() {
@@ -75,7 +74,12 @@ export class LocalComponent implements OnInit {
   showCity() {
     return this.localWeatherData?.results.city
   }
-  
 
+  btnIcon() {
+    return this.themeService.getIcon()
+  }
 
+  select() {
+    return this.themeService.selectElementClass()
+  }
 }

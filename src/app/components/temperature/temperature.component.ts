@@ -38,6 +38,8 @@ export class TemperatureComponent implements OnInit{
   }
 
   
+
+  
 }
 
 
