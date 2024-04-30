@@ -11,7 +11,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 })
 export class LocalComponent implements OnInit {
 
-  selectedCity!: string
+  selectedCity!: string;
   localWeatherData!: IWeatherData;
 
   cities = [
@@ -75,6 +75,7 @@ export class LocalComponent implements OnInit {
   showCity() {
     return this.localWeatherData?.results.city
   }
+  
 
 
 }

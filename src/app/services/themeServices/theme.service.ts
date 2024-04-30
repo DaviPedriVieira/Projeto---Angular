@@ -7,14 +7,10 @@ import { Observable } from 'rxjs';
 export class ThemeService {
 
   currentTheme: string = '';
-  themeChangeObservable: Observable<string>
 
   constructor() {
     this.currentTheme = localStorage.getItem('Theme') || 'light';
     this.applyTheme()
-    this.themeChangeObservable = new Observable<string>((observer) => {
-      observer.next(this.currentTheme);
-    });
   }
 
   toggleTheme() {
