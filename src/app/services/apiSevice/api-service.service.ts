@@ -11,9 +11,7 @@ export class ApiServiceService {
 
   private weatherDataSubject= new BehaviorSubject<IWeatherData | undefined>(undefined);
 
-  constructor(private http: HttpClient) { 
-    this.fetchWeatherData()
-  }
+  constructor(private http: HttpClient) { }
 
   getWeatherDataObservable(): Observable<IWeatherData | undefined> {
     return this.weatherDataSubject.asObservable();
@@ -25,10 +23,10 @@ export class ApiServiceService {
 
   fetchWeatherData() {
     let selectedCity = localStorage.getItem('Cidade');
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=437ede73&city_name=${selectedCity}`;
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=265e696e&city_name=${selectedCity}`;
     return this.http.get<IWeatherData>(apiLink).pipe(
       tap((weatherData) => {
-        this.weatherDataSubject.next(weatherData)
+        this.weatherDataSubject.next(weatherData);
       })
     );
   }
