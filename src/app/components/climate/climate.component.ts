@@ -16,18 +16,17 @@ export class ClimateComponent {
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.climateApiUse()
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.themeService.toggleTheme()
   }
 
-  climateApiUse(){
+  climateApiUse(): IWeatherData {
     this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
-
         this.climateWeatherData = data;
       }
     });
@@ -36,7 +35,7 @@ export class ClimateComponent {
   
   // Mostrar no HTML
   howMuchClimate(): IForecast[] {
-    return this.climateWeatherData?.results.forecast.slice(1, 6);
+    return this.climateWeatherData?.results.forecast.slice(0, 5);
   }
 
   getWeekday(forecast: IForecast): string {

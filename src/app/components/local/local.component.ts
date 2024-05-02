@@ -31,55 +31,56 @@ export class LocalComponent implements OnInit {
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
-  toggleTheme() {
+  ngOnInit(): void {
+    this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
+    this.localApiUse()
+  }
+  
+  toggleTheme(): void {
     this.themeService.toggleTheme()
   }
 
-  localApiUse() {
+  localApiUse(): IWeatherData {
     this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
       this.localWeatherData = data;
     });
     return this.localWeatherData
   }
 
-  ngOnInit() {
-    this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    this.localApiUse()
-  }
-
-  changeCity() {
+  changeCity(): void {
     this.saveCityOnLocalStorage()
     this.localApiUse()
   }
 
-  saveCityOnLocalStorage() {
+  saveCityOnLocalStorage(): void {
     localStorage.setItem('Cidade', this.selectedCity);
   }
+  
 
   date: Date = new Date();
   day: number = this.date.getDate();
   year: number = this.date.getFullYear();
 
-  getTheDayOfTheWeek() {
+  getTheDayOfTheWeek(): string {
     const weekDay = this.date.toLocaleString("default", { weekday: 'long' });
     return weekDay.charAt(0).toUpperCase() + weekDay.slice(1);
   }
 
-  getTheMonth() {
+  getTheMonth(): string {
     const month = this.date.toLocaleString("default", { month: 'long' });
     return month.charAt(0).toUpperCase() + month.slice(1);
   }
 
   // Mostrar no HTML
-  showCity() {
+  showCity(): string {
     return this.localWeatherData?.results.city
   }
 
-  btnIcon() {
+  btnIcon(): string {
     return this.themeService.getIcon()
   }
 
-  select() {
+  select(): boolean {
     return this.themeService.selectElementClass()
   }
 }

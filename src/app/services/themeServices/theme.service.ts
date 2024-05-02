@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,40 +6,34 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
 
   currentTheme: string = '';
+  renderer: Renderer2;
 
-  constructor() {
+  constructor(rendererFactory: RendererFactory2) {
+    this.renderer = rendererFactory.createRenderer(null, null);
     this.currentTheme = localStorage.getItem('Theme') || 'light';
     this.applyTheme()
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
     localStorage.setItem('Theme', this.currentTheme);
     this.applyTheme()
   }
 
-  applyTheme() {
+  applyTheme(): void {
     if (this.currentTheme == 'dark') {
-      document.body.classList.toggle('dark-mode');
+      this.renderer.addClass(document.body, 'dark-mode');
     } else {
-      document.body.classList.remove('dark-mode');
+      this.renderer.removeClass(document.body, 'dark-mode');
     }
   }
 
-  getIcon() {
-    if (this.currentTheme === 'dark') {
-      return '🌥️';
-    } else {
-      return '🌙';
-    }
+  getIcon(): string {
+    return this.currentTheme === 'dark' ? '🌥️' : '🌙';
   }
 
-  selectElementClass() {
-    if (this.currentTheme === 'dark') {
-      return true;
-    } else {
-      return false;
-    }
+  selectElementClass(): boolean {
+    return this.currentTheme === 'dark' ? true : false;
   }
 }
 
