@@ -3,7 +3,6 @@ import { IWeatherData } from 'src/app/interfaces/iweather-data';
 import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
 
-
 @Component({
   selector: 'app-local',
   templateUrl: './local.component.html',
@@ -40,11 +39,10 @@ export class LocalComponent implements OnInit {
     this.themeService.toggleTheme()
   }
 
-  localApiUse(): IWeatherData {
+  localApiUse(): void {
     this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
       this.localWeatherData = data;
     });
-    return this.localWeatherData
   }
 
   changeCity(): void {
@@ -72,7 +70,7 @@ export class LocalComponent implements OnInit {
   }
 
   
-  
+
   showCity(): string {
     return this.localWeatherData?.results.city
   }
