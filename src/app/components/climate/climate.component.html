@@ -1,6 +1,6 @@
 <table id="container-climate">
     <ng-container *ngFor="let forecast of howMuchClimate(); let isLast = last">
-      <div class="cilmateDiv">
+      <div class="climateDiv">
         <div>{{ getWeekday(forecast) }}</div>
         <div><img [src]="getConditionImage(forecast)"></div>
         <div>{{ getTemperatureRange(forecast) }}</div>

@@ -16,15 +16,15 @@ export class TemperatureComponent implements OnInit{
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.temperatureApiUse()
   }
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.themeService.toggleTheme();
   }
 
-  temperatureApiUse(){
+  temperatureApiUse(): void {
     this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
         this.temperatureWeatherData = data;
@@ -33,13 +33,9 @@ export class TemperatureComponent implements OnInit{
   }
 
   // Mostrar no HTML
-  showTemperature() {
+  showTemperature(): number {
     return this.temperatureWeatherData?.results.temp
   }
-
-  
-
-  
 }
 
 
