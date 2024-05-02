@@ -25,7 +25,7 @@ export class ClimateComponent {
   }
 
   climateApiUse(): IWeatherData {
-    this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
+    this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
         this.climateWeatherData = data;
       }
@@ -33,7 +33,8 @@ export class ClimateComponent {
     return this.climateWeatherData
   }
   
-  // Mostrar no HTML
+  
+  
   howMuchClimate(): IForecast[] {
     return this.climateWeatherData?.results.forecast.slice(0, 5);
   }

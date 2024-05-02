@@ -8,8 +8,8 @@ export class ThemeService {
   currentTheme: string = '';
   renderer: Renderer2;
 
-  constructor(rendererFactory: RendererFactory2) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+  constructor(rendererFactory: RendererFactory2) { 
+    this.renderer = rendererFactory.createRenderer(null, null); 
     this.currentTheme = localStorage.getItem('Theme') || 'light';
     this.applyTheme()
   }

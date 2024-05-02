@@ -9,24 +9,24 @@ import { tap } from 'rxjs';
 })
 export class ApiServiceService {
 
-  private weatherDataSubject= new BehaviorSubject<IWeatherData | undefined>(undefined);
+  private behaviorWeatherData = new BehaviorSubject<IWeatherData | undefined>(undefined);
 
   constructor(private http: HttpClient) { }
 
-  getWeatherDataObservable(): Observable<IWeatherData | undefined> {
-    return this.weatherDataSubject.asObservable();
+  getBehaviorWeatherData(): Observable<IWeatherData | undefined> {
+    return this.behaviorWeatherData.asObservable();
   }
 
-  setWeatherData(weatherData: IWeatherData | undefined): void {
-    this.weatherDataSubject.next(weatherData);
+  setBehaviorWeatherData(weatherData: IWeatherData | undefined): void {
+    this.behaviorWeatherData.next(weatherData);
   }
 
   fetchWeatherData(): Observable<IWeatherData> {
     let selectedCity = localStorage.getItem('Cidade');
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=6bde0c23&city_name=${selectedCity}`;
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=783861a3&city_name=${selectedCity}`;
     return this.http.get<IWeatherData>(apiLink).pipe(
       tap((weatherData) => {
-        this.weatherDataSubject.next(weatherData);
+        this.setBehaviorWeatherData(weatherData);
       })
     );
   }

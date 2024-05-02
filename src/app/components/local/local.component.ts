@@ -71,7 +71,8 @@ export class LocalComponent implements OnInit {
     return month.charAt(0).toUpperCase() + month.slice(1);
   }
 
-  // Mostrar no HTML
+  
+  
   showCity(): string {
     return this.localWeatherData?.results.city
   }

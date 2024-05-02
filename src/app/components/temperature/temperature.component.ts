@@ -25,14 +25,15 @@ export class TemperatureComponent implements OnInit{
   }
 
   temperatureApiUse(): void {
-    this.apiService.getWeatherDataObservable().subscribe((data: IWeatherData | undefined) => {
+    this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
         this.temperatureWeatherData = data;
       }
     });
   }
 
-  // Mostrar no HTML
+  
+  
   showTemperature(): number {
     return this.temperatureWeatherData?.results.temp
   }
