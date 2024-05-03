@@ -27,4 +27,13 @@ export class ThemeService {
       this.renderer.removeClass(document.body, 'dark-mode');
     }
   }
+
+
+  bntIcon(): string {
+    return this.currentTheme === 'dark' ? '🌥️' : '🌙';
+  }
+
+  selectElementTheme(): boolean {
+    return this.currentTheme === 'dark' ? true : false;
+  }
 }
