@@ -41,7 +41,7 @@ export class LocalComponent implements OnInit {
 
   localApiUse(): void {
     this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
-      this.weatherData = data;
+        this.weatherData = data;
     });
   }
 
@@ -75,10 +75,10 @@ export class LocalComponent implements OnInit {
   }
 
   bntIcon(): string {
-    return this.themeService.currentTheme === 'dark' ? '🌥️' : '🌙';
+    return this.themeService.bntIcon();
   }
 
   selectElementTheme(): boolean {
-    return this.themeService.currentTheme === 'dark' ? true : false;
+    return this.themeService.selectElementTheme();
   }
 }
