@@ -1,13 +1,13 @@
 <div id="btnDiv">
-    <div id="btnChangeTheme" (click)="toggleTheme()">
+    <div id="btnChangeTheme" (click)="changeTheme()">
         {{ btnIcon() }}
     </div>
 </div>
 <div class="localInformations">
-    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [ngClass]="{'dark-mode': select()}">
-        <option *ngFor="let city of cities" [value]="city.name">
+    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [ngClass]="{'dark-mode': selectElementTheme()}">
+        <option *ngFor="let city of cities">
             {{ city.name }}
-          </option>
+        </option>
     </select>
     <div id="city">{{ showCity() }}</div> 
     <div>{{ getTheDayOfTheWeek() }}, {{ day }} de {{ getTheMonth() }} de {{ year }}</div>
