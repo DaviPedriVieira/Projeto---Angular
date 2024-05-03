@@ -1,15 +1,13 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  currentTheme: string = '';
-  renderer: Renderer2;
+  currentTheme: string;
 
-  constructor(rendererFactory: RendererFactory2) { 
-    this.renderer = rendererFactory.createRenderer(null, null); 
+  constructor() { 
     this.currentTheme = localStorage.getItem('Theme') || 'light';
     this.applyTheme()
   }
@@ -22,12 +20,11 @@ export class ThemeService {
 
   applyTheme(): void {
     if (this.currentTheme == 'dark') {
-      this.renderer.addClass(document.body, 'dark-mode');
+      document.body.classList.add('dark-mode');
     } else {
-      this.renderer.removeClass(document.body, 'dark-mode');
+      document.body.classList.remove('dark-mode');
     }
   }
-
 
   bntIcon(): string {
     return this.currentTheme === 'dark' ? '🌥️' : '🌙';
