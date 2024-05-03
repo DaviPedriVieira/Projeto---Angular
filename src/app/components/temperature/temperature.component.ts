@@ -10,8 +10,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 })
 export class TemperatureComponent implements OnInit{
 
-
-  temperatureWeatherData!: IWeatherData;
+  weatherData!: IWeatherData;
   temperatureSelectedCity!: string
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
@@ -27,15 +26,14 @@ export class TemperatureComponent implements OnInit{
   temperatureApiUse(): void {
     this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
-        this.temperatureWeatherData = data;
+        this.weatherData = data;
       }
     });
   }
 
   
-  
   showTemperature(): number {
-    return this.temperatureWeatherData?.results.temp
+    return this.weatherData?.results.temp
   }
 }
 

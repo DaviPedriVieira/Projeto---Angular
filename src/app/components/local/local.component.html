@@ -1,6 +1,6 @@
 <div id="btnDiv">
     <div id="btnChangeTheme" (click)="changeTheme()">
-        {{ btnIcon() }}
+        {{ bntIcon() }}
     </div>
 </div>
 <div class="localInformations">
@@ -10,6 +10,6 @@
         </option>
     </select>
     <div id="city">{{ showCity() }}</div> 
-    <div>{{ getTheDayOfTheWeek() }}, {{ day }} de {{ getTheMonth() }} de {{ year }}</div>
+    <div>{{ getWeekDay() }}, {{ monthDay }} de {{ getMonth() }} de {{ year }}</div>
 </div>
 

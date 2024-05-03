@@ -23,9 +23,9 @@ export class ApiServiceService {
 
   fetchWeatherData(): Observable<IWeatherData> {
     let selectedCity = localStorage.getItem('Cidade');
-    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=783861a3&city_name=${selectedCity}`;
+    let apiLink = `https://api.hgbrasil.com/weather?format=json-cors&key=437ede73&city_name=${selectedCity}`;
     return this.http.get<IWeatherData>(apiLink).pipe( // junta tudo para que haja somente um retorno
-      tap((weatherData) => {   // atualiza a variável 
+      tap((weatherData) => { // atualiza a variável 
         this.setBehaviorWeatherData(weatherData);
       })
     );
