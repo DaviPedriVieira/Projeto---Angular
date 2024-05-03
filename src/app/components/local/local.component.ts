@@ -35,7 +35,7 @@ export class LocalComponent implements OnInit {
     this.localApiUse()
   }
   
-  toggleTheme(): void {
+  changeTheme(): void {
     this.themeService.toggleTheme()
   }
 
@@ -79,7 +79,7 @@ export class LocalComponent implements OnInit {
     return this.themeService.getIcon()
   }
 
-  select(): boolean {
+  selectElementTheme(): boolean {
     return this.themeService.selectElementClass()
   }
 }

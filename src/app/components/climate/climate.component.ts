@@ -12,7 +12,6 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 export class ClimateComponent {
 
   climateWeatherData!: IWeatherData;
-  forecast!: IForecast;
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 
