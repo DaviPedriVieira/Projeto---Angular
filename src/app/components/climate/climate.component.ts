@@ -11,7 +11,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 })
 export class ClimateComponent {
 
-  climateWeatherData!: IWeatherData;
+  weatherData!: IWeatherData;
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 
@@ -23,19 +23,17 @@ export class ClimateComponent {
     this.themeService.toggleTheme()
   }
 
-  climateApiUse(): IWeatherData {
+  climateApiUse(): void {
     this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
-        this.climateWeatherData = data;
+        this.weatherData = data;
       }
     });
-    return this.climateWeatherData
   }
   
   
-  
   howMuchClimate(): IForecast[] {
-    return this.climateWeatherData?.results.forecast.slice(0, 5);
+    return this.weatherData?.results.forecast.slice(0, 5);
   }
 
   getWeekday(forecast: IForecast): string {
@@ -57,6 +55,5 @@ export class ClimateComponent {
   getWindSpeed(forecast: IForecast): string {
     return `🍃 ${forecast.wind_speedy}`;
   }
-  
 }
 
