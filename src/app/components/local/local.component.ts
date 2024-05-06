@@ -31,7 +31,7 @@ export class LocalComponent implements OnInit {
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
   ngOnInit(): void {
-    this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
+    this.selectedCity = localStorage.getItem('City') || 'Jaraguá do Sul, SC';
     this.localApiUse()
   }
   
@@ -51,7 +51,7 @@ export class LocalComponent implements OnInit {
   }
 
   saveCityOnLocalStorage(): void {
-    localStorage.setItem('Cidade', this.selectedCity);
+    localStorage.setItem('City', this.selectedCity);
   }
   
 
