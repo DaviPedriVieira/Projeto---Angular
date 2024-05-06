@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IWeatherData } from 'src/app/interfaces/iweather-data';
 import { ApiServiceService } from 'src/app/services/apiSevice/api-service.service';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
-
 
 @Component({
   selector: 'app-local',
@@ -10,7 +10,8 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 })
 export class LocalComponent implements OnInit {
 
-  selectedCity!: string
+  selectedCity!: string;
+  weatherData!: IWeatherData;
 
   cities = [
     { name: 'Jaraguá do Sul, SC' },
@@ -25,51 +26,59 @@ export class LocalComponent implements OnInit {
     { name: 'Vitória, ES' },
     { name: 'Manaus, AM' },
     { name: 'Belém, PA' },
-    { name: 'Grajaú, MA' },
   ];
-
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
-  toggleTheme() {
+  ngOnInit(): void {
+    this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
+    this.localApiUse()
+  }
+  
+  changeTheme(): void {
     this.themeService.toggleTheme()
   }
 
-  // test() {
-  //   this.apiService.fetchWeatherData().subscribe((data) => {
-  //     this.apiService.weatherData = data;
-  //   });
-  // }
-
-  ngOnInit() {
-    this.selectedCity = localStorage.getItem('Cidade') || 'Jaraguá do Sul, SC';
-    this.apiService.fetchWeatherData()
-    this.themeService.changeElementsTheme(this.themeService.currentTheme);
+  localApiUse(): void {
+    this.apiService.fetchWeatherData().subscribe((data: IWeatherData) => {
+        this.weatherData = data;
+    });
   }
 
-  changeCity() {
+  changeCity(): void {
     this.saveCityOnLocalStorage()
-    this.apiService.fetchWeatherData()
+    this.localApiUse()
   }
 
-  saveCityOnLocalStorage() {
+  saveCityOnLocalStorage(): void {
     localStorage.setItem('Cidade', this.selectedCity);
-
   }
+  
 
   date: Date = new Date();
-  day: number = this.date.getDate();
+  monthDay: number = this.date.getDate();
   year: number = this.date.getFullYear();
 
-  getTheDayOfTheWeek() {
+  getWeekDay(): string {
     const weekDay = this.date.toLocaleString("default", { weekday: 'long' });
     return weekDay.charAt(0).toUpperCase() + weekDay.slice(1);
   }
 
-  getTheMonth() {
+  getMonth(): string {
     const month = this.date.toLocaleString("default", { month: 'long' });
     return month.charAt(0).toUpperCase() + month.slice(1);
   }
 
+  
+  showCity(): string {
+    return this.weatherData?.results.city
+  }
 
+  bntIcon(): string {
+    return this.themeService.bntIcon();
+  }
+
+  selectElementTheme(): boolean {
+    return this.themeService.selectElementTheme();
+  }
 }

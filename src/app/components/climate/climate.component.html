@@ -1,13 +1,12 @@
 <table id="container-climate">
-    <ng-container *ngFor="let forecast of apiService.weatherData.results.forecast.slice(1, 6); let isLast = last">
-      <div class="cilmateDiv">
-        <div>{{forecast.weekday}}</div>
-        <div><img [src]="'./assets/' + forecast.condition + '.svg'"></div>
-        <div>{{forecast.min}}° - {{forecast.max}}°</div>
-        <div>💧 {{forecast.rain_probability}}%</div>
-        <div>🍃 {{forecast.wind_speedy}}</div>
-      </div>
-      <hr *ngIf="!isLast"> 
-    </ng-container>
-  </table>
-  
+  <ng-container *ngFor="let forecast of howMuchClimate(); let isLast = last">
+    <div class="climateDiv">
+      <div>{{ getWeekday(forecast) }}</div>
+      <div><img [src]="getConditionImage(forecast)"></div>
+      <div>{{ getTemperatureRange(forecast) }}</div>
+      <div>{{ getRainProbability(forecast) }}</div>
+      <div>{{ getWindSpeed(forecast) }}</div>
+    </div>
+    <hr *ngIf="!isLast"> 
+  </ng-container>
+</table>
