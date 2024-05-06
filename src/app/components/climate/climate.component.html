@@ -1,4 +1,4 @@
-<table id="container-climate">
+<div id="container-climate">
   <ng-container *ngFor="let forecast of howMuchClimate(); let isLast = last">
     <div class="climateDiv">
       <div>{{ getWeekday(forecast) }}</div>
@@ -9,4 +9,4 @@
     </div>
     <hr *ngIf="!isLast"> 
   </ng-container>
-</table>
+</div>

@@ -11,7 +11,6 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 export class TemperatureComponent implements OnInit{
 
   weatherData!: IWeatherData;
-  temperatureSelectedCity!: string
 
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) {}
 

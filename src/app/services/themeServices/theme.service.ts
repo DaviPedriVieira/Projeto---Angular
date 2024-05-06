@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IWeatherData } from 'src/app/interfaces/iweather-data';
 
 @Injectable({
   providedIn: 'root'

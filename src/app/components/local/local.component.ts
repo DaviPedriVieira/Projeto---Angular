@@ -31,8 +31,13 @@ export class LocalComponent implements OnInit {
   constructor(public apiService: ApiServiceService, public themeService: ThemeService) { }
 
   ngOnInit(): void {
-    this.selectedCity = localStorage.getItem('City') || 'Jaraguá do Sul, SC';
-    this.localApiUse()
+    this.selectedCity = localStorage.getItem('City') || "";
+    
+    this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
+      if (data !== undefined) {
+        this.weatherData = data;
+      }
+    });
   }
   
   changeTheme(): void {

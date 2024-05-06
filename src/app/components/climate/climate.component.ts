@@ -19,9 +19,6 @@ export class ClimateComponent {
     this.climateApiUse()
   }
 
-  toggleTheme(): void {
-    this.themeService.toggleTheme()
-  }
 
   climateApiUse(): void {
     this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
