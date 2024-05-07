@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { IWeatherData } from 'src/app/interfaces/iweather-data';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +15,7 @@ export class ThemeService {
   toggleTheme(): void {
     this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
     localStorage.setItem('Theme', this.currentTheme);
-    this.applyTheme()
+    this.applyTheme();
   }
 
   applyTheme(): void {
@@ -26,13 +24,5 @@ export class ThemeService {
     } else {
       document.body.classList.remove('dark-mode');
     }
-  }
-
-  bntIcon(): string {
-    return this.currentTheme === 'dark' ? '🌥️' : '🌙';
-  }
-
-  selectElementTheme(): boolean {
-    return this.currentTheme === 'dark' ? true : false;
   }
 }

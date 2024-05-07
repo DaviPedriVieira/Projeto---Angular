@@ -4,12 +4,12 @@
     </div>
 </div>
 <div class="localInformations">
-    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()" [ngClass]="{'dark-mode': selectElementTheme()}">
+    <select id="cities" [(ngModel)]="selectedCity" (change)="changeCity()">
         <option *ngFor="let city of cities">
             {{ city.name }}
         </option>
     </select>
     <div id="city">{{ showCity() }}</div> 
-    <div>{{ getWeekDay() }}, {{ monthDay }} de {{ getMonth() }} de {{ year }}</div>
+    <div>{{ getDate() }}</div> <!--centralizar em uma só função no .ts-->
 </div>
 

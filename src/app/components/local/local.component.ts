@@ -12,6 +12,9 @@ export class LocalComponent implements OnInit {
 
   selectedCity!: string;
   weatherData!: IWeatherData;
+  date: Date = new Date();
+  monthDay: number = this.date.getDate();
+  year: number = this.date.getFullYear();
 
   cities = [
     { name: 'Jaraguá do Sul, SC' },
@@ -59,31 +62,17 @@ export class LocalComponent implements OnInit {
     localStorage.setItem('City', this.selectedCity);
   }
   
-
-  date: Date = new Date();
-  monthDay: number = this.date.getDate();
-  year: number = this.date.getFullYear();
-
-  getWeekDay(): string {
+  getDate() {
     const weekDay = this.date.toLocaleString("default", { weekday: 'long' });
-    return weekDay.charAt(0).toUpperCase() + weekDay.slice(1);
-  }
-
-  getMonth(): string {
     const month = this.date.toLocaleString("default", { month: 'long' });
-    return month.charAt(0).toUpperCase() + month.slice(1);
+    return `${weekDay.charAt(0).toUpperCase() + weekDay.slice(1)}, ${this.monthDay} de ${month.charAt(0).toUpperCase() + month.slice(1)} de ${this.year}`;
   }
 
-  
   showCity(): string {
     return this.weatherData?.results.city
   }
 
   bntIcon(): string {
-    return this.themeService.bntIcon();
-  }
-
-  selectElementTheme(): boolean {
-    return this.themeService.selectElementTheme();
+    return this.themeService.currentTheme === 'dark' ? '🌥️' : '🌙';
   }
 }

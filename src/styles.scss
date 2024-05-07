@@ -4,13 +4,20 @@
 }
 
 body {
-    background-color: rgb(17, 76, 165);
+    background-color: var(--body);
     height: 100%;
-    color: white;
+    color: var(--fontColor);
     width: 97%;
+}
 
-    &.dark-mode{
-        background-color: black;
-        color: rgb(19, 191, 235);
-    }
+:root {
+    --body: rgb(17, 76, 165);
+    --fontColor: white;
+    --selectCities:  rgb(92, 138, 206);
+}
+
+:root .dark-mode{
+    --body: rgb(0, 0, 0);
+    --fontColor: rgb(19, 191, 235);
+    --selectCities:  #2e2e2e;
 }

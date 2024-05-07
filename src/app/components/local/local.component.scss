@@ -14,21 +14,13 @@
 /*.dark-mode #cities*/
 
 #cities {
-    background-color: rgb(92, 138, 206);
-    color: rgb(255, 255, 255);
+    background-color: var(--selectCities);
+    color: var(--fontColor);
     border-radius: 1rem;
     font-size: 1rem;
     padding: 10px 5px;
     border: none;
     outline: none;
-    
-    &.dark-mode{
-        background-color: #2e2e2e;
-        color: rgb(19, 191, 235);
-        padding: 10px 5px;
-        border: none;
-        outline: none;
-    }
 }
 
 #btnChangeTheme{

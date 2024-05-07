@@ -18,10 +18,6 @@ export class TemperatureComponent implements OnInit{
     this.temperatureApiUse()
   }
 
-  toggleTheme(): void {
-    this.themeService.toggleTheme();
-  }
-
   temperatureApiUse(): void {
     this.apiService.getBehaviorWeatherData().subscribe((data: IWeatherData | undefined) => {
       if (data !== undefined) {
@@ -30,7 +26,6 @@ export class TemperatureComponent implements OnInit{
     });
   }
 
-  
   showTemperature(): number {
     return this.weatherData?.results.temp
   }
